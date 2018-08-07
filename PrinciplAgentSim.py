@@ -255,4 +255,40 @@ for r in range(0,runs):
     Zero_allocation=np.concatenate((Zero_allocation,zeroa),axis=0)
     
 mean_rents=np.mean(data_rent,axis=0)
-mean_revenues=np.mean(data_revenue,axis=0)       
+mean_revenues=np.mean(data_revenue,axis=0) 
+
+#--------------------------------------------    
+#---------------Plot Data -------------------
+#-------------------------------------------- 
+
+plt.plot(mean_revenues,color='blue',label='Principal Revenues')
+#plt.ylim(0,20)
+#plt.title('R = ',str(R),' c = ',str(c))
+plt.ylabel('Dollars ($)')
+plt.xlabel('week')
+plt.plot(mean_rents,color='red',label='Sales rep comp.')
+plt.legend()
+#plt.savefig('/Users/elliotaguilar/Documents/Roivant/Revenues_strat_plot_R_50.pdf')
+plt.show()
+
+plt.plot(np.sum(Prop_allocation,axis=0)/runs,color='red',label='prop all.')
+plt.ylim(0,1)
+plt.title('Sales rep effort strategies')
+plt.plot(np.sum(Max_allocation,axis=0)/runs,color='blue',label='max all.')
+plt.plot(np.sum(Random_allocation,axis=0)/runs,color='green',label='rand all.')
+plt.plot(np.sum(Zero_allocation,axis=0)/runs,color='orange',label='zero all.')
+plt.xlabel('week')
+plt.legend()
+#plt.savefig('/Users/elliotaguilar/Documents/Roivant/Agent_strat_plot_R_50.pdf')
+plt.show()
+
+plt.plot(np.sum(Quota_wage,axis=0)/runs,color='green',label='Quota wage')
+plt.ylim(0,1)
+plt.title('Principal compensation strategies')
+plt.plot(np.sum(Fixed_wage,axis=0)/runs,color='red',label='fixed wage')
+plt.plot(np.sum(Commission_wage,axis=0)/runs,color='blue',label='Commission wage')
+plt.xlabel('week')
+plt.legend()
+#plt.savefig('/Users/elliotaguilar/Documents/Roivant/Princ_strat_plot_R_50.pdf')
+plt.show()
+
